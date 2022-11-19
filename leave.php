@@ -33,6 +33,18 @@ include 'header_data.php';
 												<input data-title="A tooltip for the input" type="date" name="enddate" placeholder="" data-original-title="" class="span6 ">
 											</div>
 										</div>
+
+										 <div class="control-group">
+											<label class="control-label" for="basicinput">Status</label>
+											<div class="controls">
+												<select name="status" >
+													<option value="">Please select</option>
+													<option value="0">Pending</option>
+													<option value="1">Approved</option>
+													<option value="2">Rejected</option>
+												</select>
+											</div>
+										</div>
 										
 
 										<div class="control-group">
@@ -89,9 +101,9 @@ include 'header_data.php';
 									
 									  
 									  <th>EMPNAME</th>
-                                                                          <th>Applied Date</th>
+                                      <th>Applied Date</th>
 									  <th>DATE</th>
-                                                                          <th>Todate</th>
+                                      <th>Todate</th>
 									  <th>No Of Leaves</th>
 									  <th>Request Type</th>
 									  <th>Remarks</th>
@@ -114,7 +126,16 @@ include 'header_data.php';
 										   {
 												   $checkdate = $_POST['startdate'];
 												   $todate  = $_POST['enddate'];
-												   $sql = "SELECT * from leavea where date Between '$checkdate' and '$todate' order by date ";
+												   $status = $_POST['status'];
+												   if ($checkdate != '' && $todate != '' && $status == '') {
+												   	 $sql = "SELECT * from leavea where date Between '$checkdate' and '$todate' order by date ";
+												   }
+												   elseif ($checkdate == '' && $todate == '' && $status != '') {
+												     $sql = "SELECT * from leavea where status=$status order by date ";
+												   }elseif ($checkdate != '' && $todate != '' && $status != '') {
+												   	 $sql = "SELECT * from leavea where date Between '$checkdate' and '$todate' and status=$status order by date ";
+												   }
+												  
 												   $res=mysqli_query($conn,$sql);
 											}
 										  else if(isset($_POST['search']))
@@ -144,9 +165,9 @@ include 'header_data.php';
                                       
                                       
                                      
-				       <td> <?php  echo $row['emp_name'];  ?></td>
+				      				   <td> <?php  echo $row['emp_name'];  ?></td>
                                        <td> <?php  echo $row['datetime'];  ?> </td>
-				       <td> <?php  echo $row['date'];  ?></td>
+				       				   <td> <?php  echo $row['date'];  ?></td>
                                        <td> <?php  echo $row['todate'];  ?></td>
                                        <td> <?php  echo $row['no_of_days'];  ?></td>
                                        <td> <?php  echo $row['type'];  ?></td>

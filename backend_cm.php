@@ -419,6 +419,9 @@ if (isset($_POST['submit'])) {
        mysqli_multi_query($conn,"INSERT INTO `q21_table` (`id`, `cm_id`, `q1`, `q1_point`, `q1_score`, `q1_select`, `q1_comment`, `created_at`) VALUES (NULL, '$cm_id', '$q21', '$q21_point', '$q21_score', '$q21_select', '$q21_comment', current_timestamp())");
 
 
+       
+
+
 
 
       header('location:cmreport.php');
