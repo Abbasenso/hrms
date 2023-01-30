@@ -149,18 +149,18 @@ include 'header_data.php';
 												   $status = $_POST['status'];
 												   $emp_id = $_POST['emp'];
 												   if ($checkdate != '' && $todate != '' && $status == '' && $emp_id == '') {
-												   	 $sql = "SELECT * from leavea where date Between '$checkdate' and '$todate' order by date ";
+												   	 $sql = "SELECT * from leavea where date Between '$checkdate' and '$todate' order by date Desc";
 												   }
 												   elseif ($checkdate == '' && $todate == '' && $status != '' && $emp_id == '') {
-												     $sql = "SELECT * from leavea where status=$status order by date ";
+												     $sql = "SELECT * from leavea where status=$status order by date Desc";
 												   }elseif ($checkdate != '' && $todate != '' && $status != '' && $emp_id == '') {
-												   	 $sql = "SELECT * from leavea where date Between '$checkdate' and '$todate' and status=$status order by date ";
+												   	 $sql = "SELECT * from leavea where date Between '$checkdate' and '$todate' and status=$status order by date Desc";
 												   }
 												   elseif ($checkdate == '' && $todate == '' && $status == '' && $emp_id != '') {
-													$sql = "SELECT * FROM `leavea` WHERE `emp_id`='$emp_id' order by date ";
+													$sql = "SELECT * FROM `leavea` WHERE `emp_id`='$emp_id' order by date Desc";
 											   	   }
 													elseif ($checkdate == '' && $todate == '' && $status != '' && $emp_id != '') {
-														$sql = "SELECT * FROM `leavea` WHERE `emp_id`='$emp_id' and status=$status order by date ";
+														$sql = "SELECT * FROM `leavea` WHERE `emp_id`='$emp_id' and status=$status order by date Desc";
 													}
 												  
 												   $res=mysqli_query($conn,$sql);
@@ -177,7 +177,7 @@ include 'header_data.php';
 												   }
 												   elseif ($filter != '') 
 												   {
-													   $sql="SELECT * from leavea where emp_id='$filter' order by date asc" ;
+													   $sql="SELECT * from leavea where emp_id='$filter' order by date Desc" ;
 														   $res=mysqli_query($conn,$sql);
 												   }
 											   }

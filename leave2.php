@@ -89,9 +89,9 @@ include 'header_data.php';
 									
 									  
 									  <th>EMPNAME</th>
-                                                                          <th>Applied Date</th>
+                                      <th>Applied Date</th>
 									  <th>DATE</th>
-                                                                          <th>Todate</th>
+                                      <th>Todate</th>
 									  <th>No Of Leaves</th>
 									  <th>Request Type</th>
 									  <th>Remarks</th>
