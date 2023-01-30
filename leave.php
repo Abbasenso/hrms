@@ -45,6 +45,26 @@ include 'header_data.php';
 												</select>
 											</div>
 										</div>
+
+										<div class="control-group">
+											<label class="control-label" for="basicinput">Employee</label>
+											<div class="controls">
+												<select name="emp" >
+													<option value="">Please select Employee..</option>
+												    <?php 
+													  $emp_sql=mysqli_query($conn,"SELECT * FROM `emp` WHERE `status`=0");
+													  while ($emp_row=mysqli_fetch_assoc($emp_sql)) { ?>
+
+													  <option value="<?php echo $emp_row['emp_id'] ?>"><?php echo $emp_row['emp'] ?></option>
+														
+													  <?php }
+
+													?>
+
+
+												</select>
+											</div>
+										</div>
 										
 
 										<div class="control-group">
@@ -127,14 +147,21 @@ include 'header_data.php';
 												   $checkdate = $_POST['startdate'];
 												   $todate  = $_POST['enddate'];
 												   $status = $_POST['status'];
-												   if ($checkdate != '' && $todate != '' && $status == '') {
+												   $emp_id = $_POST['emp'];
+												   if ($checkdate != '' && $todate != '' && $status == '' && $emp_id == '') {
 												   	 $sql = "SELECT * from leavea where date Between '$checkdate' and '$todate' order by date ";
 												   }
-												   elseif ($checkdate == '' && $todate == '' && $status != '') {
+												   elseif ($checkdate == '' && $todate == '' && $status != '' && $emp_id == '') {
 												     $sql = "SELECT * from leavea where status=$status order by date ";
-												   }elseif ($checkdate != '' && $todate != '' && $status != '') {
+												   }elseif ($checkdate != '' && $todate != '' && $status != '' && $emp_id == '') {
 												   	 $sql = "SELECT * from leavea where date Between '$checkdate' and '$todate' and status=$status order by date ";
 												   }
+												   elseif ($checkdate == '' && $todate == '' && $status == '' && $emp_id != '') {
+													$sql = "SELECT * FROM `leavea` WHERE `emp_id`='$emp_id' order by date ";
+											   	   }
+													elseif ($checkdate == '' && $todate == '' && $status != '' && $emp_id != '') {
+														$sql = "SELECT * FROM `leavea` WHERE `emp_id`='$emp_id' and status=$status order by date ";
+													}
 												  
 												   $res=mysqli_query($conn,$sql);
 											}
