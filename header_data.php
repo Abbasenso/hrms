@@ -13,6 +13,7 @@
      $username = $_SESSION['items'][0];
      
      $role = $_SESSION['items'][1];
+     
    
    
    ?>
@@ -28,6 +29,8 @@
       <link rel="stylesheet" type="text/css" href="style.css">
       <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
       <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+      <script src="ckeditor/ckeditor.js"></script>
+      <!-- <script src="ckfinder/ckfinder.js"></script> -->
    </head>
    <body>
       <div class="navbar navbar-fixed-top">

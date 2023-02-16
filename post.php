@@ -175,6 +175,12 @@ $server_path="http://wfm.ensomerge.com/hr/post/";
 												
                                                    </a>
 
+												   <a href="post_edit.php?id=<?php echo $id ?>" class="btn btn-small" id="theButton" >
+													<i class="icon-edit shaded"></i>
+													Edit Post
+												
+                                                   </a>
+
                                                
 
 											</div>

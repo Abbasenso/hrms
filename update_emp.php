@@ -24,7 +24,7 @@ $result = mysqli_query($conn,"UPDATE `employee` SET `role` = '$role', `doj` = '$
                  echo '<script>';
                  echo 'alert("Job Information Update Sucessfull");';
                  echo 'window.location.href = "employee2.php";';
-				echo '</script>';
+				     echo '</script>';
    	             
    	
    }else{
